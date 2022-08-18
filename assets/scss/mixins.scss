@@ -1,0 +1,23 @@
+@mixin container {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  @media (max-width: $large-mobile) {
+    width: 95%;
+  }
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin center {
+  justify-content: center;
+  align-items: center;
+}
