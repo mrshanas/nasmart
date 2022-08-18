@@ -7,13 +7,17 @@
           <p>Shop with us we got the right tools for you</p>
           <div>
             <!-- Brand icons -->
-            <a href="https://instagram.com" class="brand">
+            <a href="https://instagram.com" class="brand" target="_blank">
               <fa :icon="['fab', 'instagram']" class="brand-icon" />
             </a>
-            <a href="https://twitter.com/mrshanas" class="brand">
+            <a
+              href="https://twitter.com/mrshanas"
+              class="brand"
+              target="_blank"
+            >
               <fa :icon="['fab', 'twitter']" class="brand-icon" />
             </a>
-            <a href="https://facebook.com" class="brand">
+            <a href="https://facebook.com" class="brand" target="_blank">
               <fa :icon="['fab', 'facebook']" class="brand-icon" />
             </a>
           </div>
@@ -71,6 +75,7 @@ export default {
 <style lang="scss" scoped>
 footer {
   width: 100%;
+  // testing if the footer will stay down
   /* position: absolute;
   bottom: 0; */
   background: $rich-black;
@@ -99,7 +104,6 @@ footer {
           text-decoration: none;
           color: $snow;
         }
-        /* justify-content: space-between; */
         div {
           @include flex-row;
           width: 100%;
