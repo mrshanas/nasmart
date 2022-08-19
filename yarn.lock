@@ -3385,6 +3385,13 @@ bser@2.1.1:
   dependencies:
     node-int64 "^0.4.0"
 
+buefy@^0.9.21:
+  version "0.9.21"
+  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.9.21.tgz#1b01f4dafefe958ca7934447dfe821dfef18d2fe"
+  integrity sha512-geOJgzi5jFDyRJ9Zl0379yyRBatZ6Qg83kRnCJTb7/nCuXcfXd/eis3tFaDTGuntnfv2MezHzc092OIHwgRwAg==
+  dependencies:
+    bulma "0.9.3"
+
 buffer-from@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
@@ -3426,6 +3433,11 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha512-HpGFw18DgFWlncDfjTa2rcQ4W88O1mC8e8yZ2AvQY5KDaktSTwo+KRf6nHK6FRI5FyRyb/5T6+TSxfP7QyGsmQ==
+
+bulma@0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.3.tgz#ddccb7436ebe3e21bf47afe01d3c43a296b70243"
+  integrity sha512-0d7GNW1PY4ud8TWxdNcP6Cc8Bu7MxcntD/RRLGWuiw/s0a9P+XlH/6QoOIrmbj6o8WWJzJYhytiu9nFjTszk1g==
 
 bytes@3.0.0:
   version "3.0.0"
@@ -7613,6 +7625,11 @@ loose-envify@^1.0.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lottie-web@^5.1.9:
+  version "5.9.6"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.9.6.tgz#62ae68563355d3e04aa75d53dec3dd4bea0e57c9"
+  integrity sha512-JFs7KsHwflugH5qIXBpB4905yC1Sub2MZWtl/elvO/QC6qj1ApqbUZJyjzJseJUtVpgiDaXQLjBlIJGS7UUUXA==
+
 lower-case@^1.1.1:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
@@ -8364,6 +8381,13 @@ num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha512-Y1wZESM7VUThYY+4W+X4ySH2maqcA+p7UR+w8VWNWVAd6lwuXXWz/w/Cz43J/dI2I+PS6wD5N+bJUF+gjWvIqg==
+
+nuxt-buefy@^0.4.23:
+  version "0.4.23"
+  resolved "https://registry.yarnpkg.com/nuxt-buefy/-/nuxt-buefy-0.4.23.tgz#d2283e043df786358626d51f875df592312c1870"
+  integrity sha512-3qvYogNPQ/xO1xjgyVnQViKcnCWTUUgqBGwfdYQhk9QlDqECsaOUt4ri9PVfRjAkD/Zpjg7RNM5gS105STZYoA==
+  dependencies:
+    buefy "^0.9.21"
 
 nuxt@^2.15.8:
   version "2.15.8"
@@ -11601,6 +11625,13 @@ vue-loader@^15.9.7:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-lottie@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/vue-lottie/-/vue-lottie-0.2.1.tgz#f9f62c34a276e6834255406118fb05b51f765e4b"
+  integrity sha512-zInUX69Ij8MhVR3XArpu4PqqBoufwKxS5UMutWCPm59VUaB5H6GtnaIzf9M+l6aYU+Kr8gF/W9dzWLgRuU6V+Q==
+  dependencies:
+    lottie-web "^5.1.9"
 
 vue-meta@^2.4.0:
   version "2.4.0"

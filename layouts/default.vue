@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <main>
     <navbar />
     <nuxt />
     <Footer />
-  </div>
+  </main>
 </template>
 
-<script>
+<script lang="ts">
 export default {}
 </script>
 

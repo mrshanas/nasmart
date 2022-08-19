@@ -31,12 +31,6 @@
           <nuxt-link to="/contact" class="bottom-links"> Contact Us </nuxt-link>
         </div>
         <div>
-          <h3>Quick Links</h3>
-          <nuxt-link to="/wishlist" class="bottom-links"> Wishlist </nuxt-link>
-          <nuxt-link to="/checkout" class="bottom-links"> Checkout </nuxt-link>
-          <nuxt-link to="/cart" class="bottom-links"> Cart </nuxt-link>
-        </div>
-        <div>
           <h3>Contact us</h3>
           <div class="">
             <fa icon="location-dot" />
@@ -54,7 +48,8 @@
       </div>
       <div class="copyright">
         <small>
-          Copyright &copy; <span>{{ date.getFullYear() }}</span> Nasmart
+          Copyright &copy; <span>{{ date.getFullYear() }}</span>
+          Nasmart
         </small>
         <small>All rights reserved</small>
       </div>
@@ -76,8 +71,11 @@ export default {
 footer {
   width: 100%;
   // testing if the footer will stay down
-  /* position: absolute;
-  bottom: 0; */
+  /* @media (min-width: $tablet) {
+    position: absolute;
+    bottom: 0;
+  } */
+
   background: $rich-black;
   color: $snow;
   .container {
@@ -93,10 +91,14 @@ footer {
       @media (max-width: $large-mobile) {
         @include flex-col;
         gap: 2rem 0;
+        padding: 2% 0 0 2%;
       }
+      gap: 0 2rem;
       div {
         h3 {
           font-weight: bolder;
+          font-size: 1.4rem;
+          word-break: keep-all;
         }
         @include flex-col;
         gap: 1rem 0;
@@ -107,6 +109,7 @@ footer {
         div {
           @include flex-row;
           width: 100%;
+
           justify-content: flex-start;
           gap: 0 0.8rem;
           .brand {

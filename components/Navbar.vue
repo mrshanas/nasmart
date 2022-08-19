@@ -17,7 +17,7 @@
           </li>
         </ul>
       </div>
-      <div class="icons" :class="{}">
+      <div class="icons">
         <nuxt-link to="/shop" class="icon-links">
           <fa icon="magnifying-glass" title="Search" />
         </nuxt-link>
@@ -38,19 +38,21 @@
     </div>
 
     <!-- Mobile menu to display links  -->
-    <div :class="{ mobileDisplay: isNavOpen }" class="mobile-menu">
-      <ul>
-        <li v-for="link in links" :key="link.to">
-          <nuxt-link
-            :to="link.to"
-            class="link"
-            :class="{ active: link.active }"
-          >
-            {{ link.title }}
-          </nuxt-link>
-        </li>
-      </ul>
-    </div>
+    <b-sidebar v-model="isNavOpen" type="is-light" fullheight overlay>
+      <div>
+        <ul>
+          <li v-for="link in links" :key="link.to">
+            <nuxt-link
+              :to="link.to"
+              class="link"
+              :class="{ active: link.active }"
+            >
+              {{ link.title }}
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
+    </b-sidebar>
   </nav>
 </template>
 
@@ -101,14 +103,23 @@ nav {
   position: sticky;
   top: 0;
   z-index: 30;
-  justify-content: center;
-  min-height: 5.5vh;
+  /* min-height: 5.5vh; */
   .container {
     @include container;
     margin: 1.2rem auto;
     align-items: center;
+    @media (max-width: $large-mobile) {
+      padding: 1.5% 0;
+    }
     .logo {
       flex: 1;
+      h3 {
+        font-weight: bolder;
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+        opacity: 0.7;
+        font-family: Poppins, 'sans-serif';
+      }
     }
     .links {
       flex: 3;
@@ -126,7 +137,7 @@ nav {
             color: #000;
           }
           .active {
-            text-decoration: underline;
+            font-weight: bolder;
           }
         }
       }
@@ -143,33 +154,7 @@ nav {
         display: none;
         @media (max-width: $large-mobile) {
           display: inline;
-        }
-      }
-    }
-  }
-  .mobile-menu {
-    display: none;
-  }
-  .mobileDisplay {
-    display: block;
-    outline: 1px solid;
-    position: sticky;
-    top: 20%;
-    z-index: 50;
-    width: 80%;
-    backdrop-filter: blur(2px);
-    /* left: 20%; */
-    height: 100vh;
-    ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      li {
-        list-style: none;
-        .link {
-          color: #000;
-          text-decoration: none;
+          padding-top: 1.5%;
         }
       }
     }

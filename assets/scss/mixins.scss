@@ -5,6 +5,9 @@
   @media (max-width: $large-mobile) {
     width: 95%;
   }
+  @media (max-width: $tablet) and (min-width: $large-mobile) {
+    width: 98%;
+  }
 }
 
 @mixin flex-col {
