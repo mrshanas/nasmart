@@ -55,8 +55,12 @@ export default {
       // @ts-ignore
       this.$router.push(`/product/${id}`)
     },
-    addToCart(id: Number) {},
-    addToWishlist(id: Number) {},
+    addToCart(id: Number) {
+      console.log(id)
+    },
+    addToWishlist(id: Number) {
+      console.log(id)
+    },
   },
 }
 </script>

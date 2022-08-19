@@ -1,4 +1,4 @@
-# nasmart
+<!-- # nasmart
 
 ## Build Setup
 
@@ -65,4 +65,11 @@ More information about the usage of this directory in [the documentation](https:
 
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store). -->
+
+# Nasmart Web store
+
+_We are here to serve you_
+<img src="assets/images/nasmart.png">
+
+Made by [mrshanas](https://github.com/mrshanas)
