@@ -1,53 +1,104 @@
 <template>
   <div class="product-card">
     <div class="img-container">
-      <img :src="require('~/assets/images/xbox.jpg')" />
+      <img v-if="imgUrl" :src="imgUrl" />
+      <img v-else :src="require('~/assets/images/xbox.jpg')" />
       <div class="product-actions">
-        <nav-link to="/product/id" class="product-action" title="View product">
-          <fa icon="eye" class="icon" />
-        </nav-link>
-        <nav-link to="/cart" class="product-action" title="Add to cart">
-          <fa icon="cart-shopping" class="icon" />
-        </nav-link>
-        <nav-link to="/wishlist" class="product-action" title="Add to wishlist">
-          <fa icon="heart" class="icon" />
-        </nav-link>
+        <fa
+          icon="eye"
+          class="icon"
+          title="View product"
+          @click="navigateToProduct(id)"
+        />
+        <fa
+          icon="cart-shopping"
+          class="icon"
+          title="Add to cart"
+          @click="addToCart(id)"
+        />
+
+        <fa
+          icon="heart"
+          class="icon"
+          title="Add to wishlist"
+          @click="addToWishlist(id)"
+        />
       </div>
     </div>
-    <p>Wireless X-box Controller</p>
-    <small>Tsh 35000</small>
+    <p>{{ name }}</p>
+    <small>Tsh {{ price }}</small>
   </div>
 </template>
 
 <script lang="ts">
-export default {}
+export default {
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
+    imgUrl: {
+      type: String,
+      default: null,
+    },
+    name: {
+      type: String,
+      default: null,
+    },
+    price: {
+      type: String,
+      default: null,
+    },
+  },
+  methods: {
+    navigateToProduct(id: Number) {
+      // @ts-ignore
+      this.$router.push(`/product/${id}`)
+    },
+    addToCart(id: Number) {},
+    addToWishlist(id: Number) {},
+  },
+}
 </script>
 
 <style lang="scss" scoped>
 .product-card {
-  /* outline: 1px solid; */
   display: flex;
   flex-direction: column;
+  @media (max-width: $large-mobile) {
+    border-bottom: 1px solid $snow;
+    padding: 0 0 3% 0;
+  }
   .img-container {
     position: relative;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    @media (max-width: $large-mobile) {
+      width: 98%;
+    }
     img {
       width: 9rem;
       display: block;
       @media (max-width: $large-mobile) {
-        width: 60%;
+        width: 70%;
         margin: 0 auto;
       }
       @media (max-width: $small-mobile) {
         margin: 0 auto;
-        width: 100%;
+        width: 90%;
       }
     }
     .product-actions {
       position: absolute;
       @include flex-col;
       gap: 1rem 0;
-      left: 71%;
-      bottom: 20%;
+      left: 68%;
+      bottom: 24%;
+      @media (max-width: $large-mobile) {
+        left: 78%;
+        bottom: 30%;
+      }
       .product-action {
         background: $white;
         border-radius: 50%;

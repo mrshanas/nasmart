@@ -11,13 +11,14 @@
       </div>
       <div>
         <lottie
-          :width="400"
+          :width="300"
           :options="lottieOptions"
           @animCreated="handleAnimation"
         />
       </div>
     </div>
 
+    <!-- Popular products section -->
     <article class="popular-products">
       <div class="header">
         <h3>Popular Products</h3>
@@ -26,22 +27,24 @@
         </nuxt-link>
       </div>
       <div class="products">
-        <product-card />
-        <product-card />
-        <product-card />
-        <product-card />
-        <product-card />
+        <div v-for="product in filteredProducts" :key="product.id">
+          <product-card
+            :id="product.id"
+            :name="product.name"
+            :img-url="product.image"
+            :price="product.price"
+          />
+        </div>
       </div>
     </article>
   </section>
-
-  <!-- Popular products section -->
 </template>
 
 <script lang="ts">
 // @ts-nocheck
 import Vue from 'vue'
 import lottie from 'vue-lottie/src/lottie.vue'
+import { mapGetters } from 'vuex'
 
 import * as welcome from '~/assets/animations/welcome.json'
 
@@ -57,6 +60,16 @@ export default Vue.extend({
         animationData: welcome.default,
       },
     }
+  },
+  computed: {
+    ...mapGetters({
+      products: 'products/getProducts',
+    }),
+    filteredProducts() {
+      const filtered = this.products
+
+      return filtered.length <= 4 ? this.products : filtered.slice(0, 4)
+    },
   },
   created() {
     this.$store.dispatch('categories/_fetchCategories')
@@ -74,14 +87,13 @@ export default Vue.extend({
 <style lang="scss" scoped>
 section {
   width: 100%;
-  /* background: $snow; */
   div {
     width: 80%;
     margin: 2% auto;
     @include flex-row;
 
     @media (max-width: $tablet) {
-      @include flex-col;
+      flex-direction: column-reverse;
       @include center;
       width: 98%;
     }
@@ -108,7 +120,6 @@ section {
       justify-content: space-between;
       @media (max-width: $large-mobile) {
         width: 90%;
-        /* margin: 0 auto; */
       }
       h3 {
         font-weight: bold;
@@ -116,9 +127,11 @@ section {
     }
     .products {
       @include flex-row;
+      div {
+        width: 100%;
+      }
       @media (max-width: $large-mobile) {
         @include flex-col;
-        /* margin: 0 auto; */
       }
     }
   }
