@@ -14,7 +14,7 @@
           icon="cart-shopping"
           class="icon"
           title="Add to cart"
-          @click="checkout({ product: id, quantity: 1 })"
+          @click="cart({ product: id, quantity: 1 })"
         />
 
         <fa icon="heart" class="icon" title="Add to wishlist" />
@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     ...mapMutations({
-      checkout: 'cart/addToCart',
+      cart: 'cart/addToCart',
     }),
     navigateToProduct(id: Number) {
       // @ts-ignore
@@ -75,15 +75,15 @@ export default {
       width: 98%;
     }
     img {
-      width: 9rem;
+      max-width: 9rem;
       display: block;
       @media (max-width: $large-mobile) {
-        width: 70%;
+        /* width: 70%; */
         margin: 0 auto;
       }
       @media (max-width: $small-mobile) {
         margin: 0 auto;
-        width: 90%;
+        /* width: 90%; */
       }
     }
     .product-actions {

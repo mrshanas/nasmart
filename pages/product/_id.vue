@@ -12,16 +12,18 @@
         <p>{{ product.description }}</p>
         <div>
           <div>
-            <!-- <p>Quantity</p>
-            <div>
-
-            </div> -->
             <b-field label="Quantity">
-              <b-numberinput min="0" :max="String(product.quantity)">
+              <b-numberinput
+                v-model="quantity"
+                min="0"
+                :max="String(product.quantity)"
+              >
               </b-numberinput>
             </b-field>
           </div>
-          <b-button outlined>Add to cart</b-button>
+          <b-button outlined class="is-success" @click="toCart"
+            >Add to cart</b-button
+          >
         </div>
       </div>
     </div>
@@ -30,8 +32,14 @@
 
 <script lang="ts">
 // @ts-nocheck
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
+
 export default {
+  data() {
+    return {
+      quantity: 0,
+    }
+  },
   computed: {
     ...mapGetters({
       products: 'products/getProducts',
@@ -40,6 +48,14 @@ export default {
       const products = this.products
       const id = +this.$route.params.id
       return products.filter((product) => product?.id === id)[0]
+    },
+  },
+  methods: {
+    ...mapMutations({
+      cart: 'cart/addToCart',
+    }),
+    toCart() {
+      this.cart({ product: this.product.id, quantity: this.quantity })
     },
   },
 }
