@@ -14,15 +14,10 @@
           icon="cart-shopping"
           class="icon"
           title="Add to cart"
-          @click="addToCart(id)"
+          @click="checkout({ product: id, quantity: 1 })"
         />
 
-        <fa
-          icon="heart"
-          class="icon"
-          title="Add to wishlist"
-          @click="addToWishlist(id)"
-        />
+        <fa icon="heart" class="icon" title="Add to wishlist" />
       </div>
     </div>
     <p>{{ name }}</p>
@@ -31,6 +26,7 @@
 </template>
 
 <script lang="ts">
+import { mapMutations } from 'vuex'
 export default {
   props: {
     id: {
@@ -51,15 +47,12 @@ export default {
     },
   },
   methods: {
+    ...mapMutations({
+      checkout: 'cart/addToCart',
+    }),
     navigateToProduct(id: Number) {
       // @ts-ignore
       this.$router.push(`/product/${id}`)
-    },
-    addToCart(id: Number) {
-      console.log(id)
-    },
-    addToWishlist(id: Number) {
-      console.log(id)
     },
   },
 }

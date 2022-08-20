@@ -26,6 +26,7 @@
         </nuxt-link>
         <nuxt-link to="/cart" class="icon-links" title="Cart">
           <fa icon="cart-shopping" />
+          <small v-if="cart.length">{{ cart.length }}</small>
         </nuxt-link>
         <fa
           v-if="!isNavOpen"
@@ -58,6 +59,7 @@
 
 <script lang="ts">
 // @ts-nocheck
+import { mapGetters } from 'vuex'
 export default {
   data() {
     const currentPath: string = this.$route.path
@@ -87,6 +89,11 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    ...mapGetters({
+      cart: 'cart/getCart',
+    }),
   },
   methods: {
     toggleNavbar() {
