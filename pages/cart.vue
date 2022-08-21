@@ -45,12 +45,13 @@
       </div>
       <div class="cart-info">
         <p>Total {{ totalCost }}</p>
-        <b-button
-          label="Proceed to checkout"
-          type="is-success"
-          class="field"
-          @click="checkout"
-        />
+        <nuxt-link to="/checkout">
+          <b-button
+            label="Proceed to checkout"
+            type="is-success"
+            class="field"
+          />
+        </nuxt-link>
         <small>Or</small>
         <nuxt-link to="/shop">
           <b-button label="Continue Shopping" type="is-success" outlined />
