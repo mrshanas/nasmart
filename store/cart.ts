@@ -24,6 +24,12 @@ export const mutations = {
       return state.cart.push(cartItem)
     }
   },
+  deleteCartItem(state: any, id: Number) {
+    const filteredCart = state.cart.filter(
+      (item: cartItem) => item.product !== id
+    )
+    state.cart = filteredCart
+  },
 }
 
 export const actions = {

@@ -3,6 +3,14 @@
     <h1 class="container">Shopping Cart</h1>
     <article v-if="!cart.length" class="container">
       <p>Your shopping cart is empty</p>
+      <nuxt-link to="/shop">
+        <b-button
+          label="Continue Shopping"
+          type="is-success"
+          outlined
+          class="field"
+        />
+      </nuxt-link>
     </article>
     <article v-else class="cart">
       <div class="cart-table">
@@ -23,13 +31,13 @@
         </b-table>
         <b-button
           label="Delete checked"
-          type="is-success"
+          type="is-danger"
           class="field"
           outlined
-          @click="deleteCartItem"
+          @click.prevent="deleteItems"
         />
         <b-button
-          class="is-danger field"
+          class="is-success field"
           label="Clear checked"
           outlined
           @click="checkedRows = []"
@@ -110,7 +118,15 @@ export default {
   },
   methods: {
     checkout() {},
-    deleteCartItem() {},
+    deleteItems() {
+      for (let i = 0; i < this.checkedRows.length; i++) {
+        this.$store.commit(
+          'cart/deleteCartItem',
+          this.checkedRows[i].product.id
+        )
+        // this.deleteCartItem(this.checkedRows[i].product.id)
+      }
+    },
   },
 }
 </script>
