@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Button } from "@mantine/core";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import { addCart, getProduct, getCartItem } from "@/store/shop/shopSlice";
@@ -75,13 +74,10 @@ export default function Product() {
                   />
                 </div>
                 <div className="basis-1 md:basis-1/4">
-                  <Button
-                    rightIcon={<AiOutlineShoppingCart />}
-                    variant="outline"
-                    onClick={addToCart}
-                  >
+                  <button onClick={addToCart}>
                     Add to Cart
-                  </Button>
+                    <AiOutlineShoppingCart />
+                  </button>
                 </div>
               </div>
             </div>

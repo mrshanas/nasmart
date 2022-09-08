@@ -1,6 +1,5 @@
 import Lottie from "lottie-react";
 import Link from "next/link";
-import { Button } from "@mantine/core";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import ecommerceAnim from "@/assets/animations/ecommerce.json";
@@ -17,13 +16,10 @@ const Hero = () => {
           </p>
           <div>
             <Link href="/shop">
-              <Button
-                leftIcon={<AiOutlineShoppingCart />}
-                variant="outline"
-                fullWidth={false}
-              >
+              <button>
                 Shop Now
-              </Button>
+                <AiOutlineShoppingCart />
+              </button>
             </Link>
           </div>
         </div>

@@ -9,11 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/server": "^11.10.0",
-    "@mantine/core": "^5.2.6",
-    "@mantine/hooks": "^5.2.6",
-    "@mantine/next": "^5.2.6",
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "lottie-react": "^2.3.1",

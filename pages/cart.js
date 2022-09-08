@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@mantine/core";
 
 import { getCart, addCart } from "@/store/shop/shopSlice";
 import { CartAdjuster } from "@/components/index";
@@ -43,9 +42,7 @@ export default function Cart() {
               {computedCart.newCart.map(({ product, subTotal, quantity }) => (
                 <tr key={product.id} className="border-b-[1px] my-10">
                   <td>
-                    <Button style={{ border: "none" }} variant="default">
-                      X
-                    </Button>
+                    <button className="border-none">X</button>
                   </td>
                   <td>
                     <div className="relative max-w-[50rem] min-h-[5rem]">
@@ -90,7 +87,7 @@ export default function Cart() {
               <div>
                 <p>Total</p> <small>{computedCart.totalPrice}</small>
               </div>
-              <Button variant="outline">Proceed to Checkout</Button>
+              <button className="border-none">Proceed to Checkout</button>
             </div>
           </div>
         </article>

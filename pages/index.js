@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Button } from "@mantine/core";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -27,7 +26,7 @@ export default function Home() {
         <div className="flex w-[90%] mx-auto justify-between">
           <h5>Popular Products</h5>
           <Link href="/shop">
-            <Button variant="outline">See All</Button>
+            <button>See All</button>
           </Link>
         </div>
         <div className="flex gap-x-3 md:w-[90%] w-[95%] flex-col md:flex-row mx-auto my-5">

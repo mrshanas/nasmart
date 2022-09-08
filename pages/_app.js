@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { MantineProvider } from "@mantine/core";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
@@ -19,20 +18,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <MantineProvider
-            withGlobalStyles
-            withNormalizeCSS
-            theme={{
-              colorScheme: "light",
-              colors: {
-                purple: ["#5222D0"],
-              },
-            }}
-          >
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </MantineProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </PersistGate>
       </Provider>
     </>
