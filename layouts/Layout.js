@@ -2,11 +2,11 @@ import { Footer, Navbar } from "@/components/index";
 
 function Layout({ children }) {
   return (
-    <div>
+    <main>
       <Navbar />
       {children}
       <Footer />
-    </div>
+    </main>
   );
 }
 

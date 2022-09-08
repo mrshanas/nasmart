@@ -19,6 +19,9 @@ function MyApp({ Component, pageProps }) {
         withNormalizeCSS
         theme={{
           colorScheme: "light",
+          colors: {
+            purple: ["#5222D0"],
+          },
         }}
       >
         <Layout>

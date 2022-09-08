@@ -7,7 +7,7 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 const Footer = () => {
   const date = new Date().getFullYear();
   return (
-    <footer className="bg-richBlack w-full flex flex-col text-white">
+    <footer className="bg-richBlack w-full flex flex-col text-white pt-3">
       <div className=" w-[95%] md:w-[80%] mx-auto gap-y-4 flex flex-col md:flex-row justify-between">
         <div className="space-y-2">
           <h3 className="text-2xl">Nasmart</h3>
