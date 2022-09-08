@@ -2,11 +2,13 @@ import { Footer, Navbar } from "@/components/index";
 
 function Layout({ children }) {
   return (
-    <main>
-      <Navbar />
-      {children}
+    <>
+      <main className="min-h-[70vh]">
+        <Navbar />
+        {children}
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
 

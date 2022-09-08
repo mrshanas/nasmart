@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section className="w-full my-3">
       <div className="flex w-[98%] md:w-[90%] mx-auto flex-col-reverse md:flex-row text-center md:text-left">
-        <div className="flex flex-col gap-y-4 flex-1">
+        <div className="flex flex-col gap-y-4 flex-1 self-center">
           <h1 className="text-4xl font-bold">Welcome to Nasmart</h1>
           <p className="text-xl">
             We are here to serve you, Home of quality electronic devices,
