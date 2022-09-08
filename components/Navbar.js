@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 import {
   AiOutlineHeart,
   AiOutlineMenu,
@@ -9,7 +10,8 @@ import {
 // import { MdOutlineDarkMode } from "react-icons/md";
 
 const Navbar = () => {
-  const { pathname } = useRouter();
+  // const { pathname } = useRouter();
+  const cart = useSelector((state) => state.cart);
 
   return (
     <nav className="w-full sticky top-0 bg-white z-50">
@@ -54,8 +56,11 @@ const Navbar = () => {
             </a>
           </Link>
           <Link href="/cart">
-            <a title="Cart">
+            <a title="Cart" className="flex items-center gap-y-2">
               <AiOutlineShoppingCart />
+              <small className="opacity-80">
+                {cart.length > 0 ? cart.length : ""}
+              </small>
             </a>
           </Link>
           {/* <MdOutlineDarkMode /> */}

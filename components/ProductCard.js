@@ -1,13 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
 import {
   AiOutlineEye,
   AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 
+import { addCart } from "@/store/shop/shopSlice";
+
 const ProductCard = ({ name, price, pic, id }) => {
-  const addToCart = () => {};
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(addCart({ product: id, quantity: 1 }));
+  };
+
   return (
     <div className="flex-[1] w-[90%] self-center mx-auto md:w-full max-w-full text-center gap-y-2">
       <div className="w-full relative min-h-[12rem]">
@@ -20,8 +28,11 @@ const ProductCard = ({ name, price, pic, id }) => {
           <Link href={`/products/${id}`}>
             <AiOutlineEye className="cursor-pointer" />
           </Link>
-          <AiOutlineHeart onClick={addToCart} />
-          <AiOutlineShoppingCart />
+          <AiOutlineHeart />
+          <AiOutlineShoppingCart
+            onClick={addToCart}
+            className="cursor-pointer"
+          />
         </div>
       </div>
     </div>

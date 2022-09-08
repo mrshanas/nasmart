@@ -7,12 +7,60 @@ const initialState = {
   categories: [],
   wishlist: [],
   cart: [],
+  product: {},
+  cartItem: {},
 };
 
 export const shopSlice = createSlice({
   name: "shop",
   initialState,
-  reducers: {},
+  reducers: {
+    addCart: (state, { payload }) => {
+      console.log(payload);
+      if (!state.cart.length) {
+        state.cart.push(payload);
+      } else {
+        const index = state.cart.findIndex(
+          (item) => item.product === payload.product
+        );
+
+        if (index !== -1) {
+          console.log(payload);
+          // updating an existing item
+          const productIndex = state.products.findIndex(
+            (item) => item.id === payload.product
+          );
+
+          // not adding to cart amount exceeding the product quantity
+
+          const limitedAmnt = state.cart[index].quantity + payload.quantity;
+          const productQty = state.products[productIndex].quantity;
+
+          if (
+            !(state.cart[index].quantity > productQty) &&
+            !(limitedAmnt > productQty)
+          ) {
+            state.cart[index].quantity += payload.quantity;
+          }
+        } else {
+          state.cart.push(payload);
+        }
+      }
+    },
+    emptyCart: (state) => {
+      state.cart = [];
+    },
+    getProduct: (state, { payload }) => {
+      const i = state.products.findIndex((item) => item.id === +payload);
+
+      state.product = state.products[i];
+    },
+    getCartItem: (state, { payload }) => {
+      const i = state.cart.findIndex((item) => item.product === +payload);
+
+      state.cartItem = state.cart[i];
+    },
+  },
   extraReducers: function (builder) {
     // products
     builder.addCase(getProducts.fulfilled, (state, action) => {
@@ -34,6 +82,7 @@ export const shopSlice = createSlice({
   },
 });
 
-// export const {  } = shopSlice.actions;
+export const { addCart, emptyCart, getCartItem, getProduct } =
+  shopSlice.actions;
 
 export default shopSlice.reducer;
