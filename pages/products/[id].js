@@ -7,6 +7,7 @@ import { Button } from "@mantine/core";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import { addCart, getProduct, getCartItem } from "@/store/shop/shopSlice";
+import { CartAdjuster } from "@/components/index";
 
 export default function Product() {
   const item = useSelector((state) => state?.cartItem);
@@ -45,7 +46,7 @@ export default function Product() {
 
   const addToCart = () => {
     dispatch(addCart({ ["product"]: productId, quantity: amount }));
-    setAmount(item.quantity);
+    setAmount(item?.quantity || amount);
   };
 
   return (
@@ -67,23 +68,11 @@ export default function Product() {
               <div className="flex flex-col md:flex-row justify-between my-5 gap-x-5 gap-y-6 items-center">
                 <div className="basis-[1] md:basis-3/4 w-full flex justify-between border items-center p-1">
                   <small>Quantity</small>
-                  <div>
-                    <Button
-                      variant="default"
-                      style={{ border: "none" }}
-                      onClick={decrement}
-                    >
-                      &lt;
-                    </Button>
-                    {amount}
-                    <Button
-                      variant="default"
-                      style={{ border: "none" }}
-                      onClick={increment}
-                    >
-                      &gt;
-                    </Button>
-                  </div>
+                  <CartAdjuster
+                    increment={increment}
+                    decrement={decrement}
+                    amount={amount}
+                  />
                 </div>
                 <div className="basis-1 md:basis-1/4">
                   <Button

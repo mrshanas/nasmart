@@ -9,6 +9,7 @@ const initialState = {
   cart: [],
   product: {},
   cartItem: {},
+  computedCart: {},
 };
 
 export const shopSlice = createSlice({
@@ -16,7 +17,6 @@ export const shopSlice = createSlice({
   initialState,
   reducers: {
     addCart: (state, { payload }) => {
-      console.log(payload);
       if (!state.cart.length) {
         state.cart.push(payload);
       } else {
@@ -47,6 +47,27 @@ export const shopSlice = createSlice({
         }
       }
     },
+    getCart: (state) => {
+      const cart = JSON.parse(JSON.stringify(state.cart));
+
+      const newCart = cart.map((item) => {
+        const i = state.products.findIndex(
+          (prod) => prod?.id === +item.product
+        );
+        const product = i !== -1 ? state.products[i] : {};
+
+        item.product = product;
+        item.subTotal = +product?.price * +item.quantity;
+        return { ...item };
+      });
+
+      const totalPrice = newCart.reduce((prev, curr) => {
+        prev += curr?.subTotal;
+        return prev;
+      }, 0);
+
+      state.computedCart = { totalPrice, newCart };
+    },
     emptyCart: (state) => {
       state.cart = [];
     },
@@ -58,7 +79,7 @@ export const shopSlice = createSlice({
     getCartItem: (state, { payload }) => {
       const i = state.cart.findIndex((item) => item.product === +payload);
 
-      state.cartItem = state.cart[i];
+      state.cartItem = state.cart[i] ?? {};
     },
   },
   extraReducers: function (builder) {
@@ -82,7 +103,7 @@ export const shopSlice = createSlice({
   },
 });
 
-export const { addCart, emptyCart, getCartItem, getProduct } =
+export const { addCart, emptyCart, getCart, getCartItem, getProduct } =
   shopSlice.actions;
 
 export default shopSlice.reducer;
