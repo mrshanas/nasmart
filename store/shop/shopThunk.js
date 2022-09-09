@@ -13,3 +13,7 @@ export const getCategories = createAsyncThunk(
     return await API.get("/categories/").then((res) => res.data);
   }
 );
+
+export const checkout = createAsyncThunk("shop/cartCheckout", async (data) => {
+  return await API.post("/cart/checkout/", data);
+});

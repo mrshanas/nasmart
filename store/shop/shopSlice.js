@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getCategories, getProducts } from "./shopThunk";
+import { getCategories, getProducts, checkout } from "./shopThunk";
 
 const initialState = {
   products: [],
@@ -10,6 +10,7 @@ const initialState = {
   product: {},
   cartItem: {},
   computedCart: {},
+  isLoading: false,
 };
 
 export const shopSlice = createSlice({
@@ -80,6 +81,20 @@ export const shopSlice = createSlice({
     },
   },
   extraReducers: function (builder) {
+    // cart checkout
+    builder.addCase(checkout.fulfilled, (state, action) => {
+      state.isLoading = false;
+      console.log(action);
+    });
+
+    builder.addCase(checkout.pending, (state, action) => {
+      state.isLoading = true;
+    });
+
+    builder.addCase(checkout.rejected, (state, action) => {
+      console.log(action);
+    });
+
     // products
     builder.addCase(getProducts.fulfilled, (state, action) => {
       state.products = action.payload;
