@@ -20,28 +20,21 @@ export const shopSlice = createSlice({
       if (!state.cart.length) {
         state.cart.push(payload);
       } else {
+        const cart = JSON.parse(JSON.stringify(state.cart));
         const index = state.cart.findIndex(
           (item) => item.product === payload.product
         );
 
         if (index !== -1) {
-          console.log(payload);
           // updating an existing item
           const productIndex = state.products.findIndex(
             (item) => item.id === payload.product
           );
 
-          // not adding to cart amount exceeding the product quantity
+          const productQty = state.products[productIndex]?.quantity;
 
-          const limitedAmnt = state.cart[index].quantity + payload.quantity;
-          const productQty = state.products[productIndex].quantity;
-
-          if (
-            !(state.cart[index].quantity > productQty) &&
-            !(limitedAmnt > productQty)
-          ) {
-            state.cart[index].quantity += payload.quantity;
-          }
+          state.cart[index].quantity =
+            payload.quantity < productQty ? payload.quantity : productQty;
         } else {
           state.cart.push(payload);
         }
@@ -81,6 +74,10 @@ export const shopSlice = createSlice({
 
       state.cartItem = state.cart[i] ?? {};
     },
+    removeCartItem: (state, { payload }) => {
+      const cart = JSON.parse(JSON.stringify(state.cart));
+      state.cart = cart.filter((item) => item.product !== +payload);
+    },
   },
   extraReducers: function (builder) {
     // products
@@ -103,7 +100,13 @@ export const shopSlice = createSlice({
   },
 });
 
-export const { addCart, emptyCart, getCart, getCartItem, getProduct } =
-  shopSlice.actions;
+export const {
+  addCart,
+  emptyCart,
+  getCart,
+  getCartItem,
+  getProduct,
+  removeCartItem,
+} = shopSlice.actions;
 
 export default shopSlice.reducer;

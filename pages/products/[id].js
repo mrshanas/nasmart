@@ -9,9 +9,7 @@ import { addCart, getProduct, getCartItem } from "@/store/shop/shopSlice";
 import { CartAdjuster } from "@/components/index";
 
 export default function Product() {
-  const item = useSelector((state) => state?.cartItem);
-
-  const [amount, setAmount] = useState(item?.quantity || 0);
+  const { cart } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
@@ -21,8 +19,10 @@ export default function Product() {
 
   useEffect(() => {
     dispatch(getProduct(id));
-    dispatch(getCartItem(id));
-  }, []);
+    // if (cartItem) dispatch(getCartItem(id));
+  }, [cart]);
+
+  const [amount, setAmount] = useState(1);
 
   const {
     image,
@@ -45,7 +45,6 @@ export default function Product() {
 
   const addToCart = () => {
     dispatch(addCart({ ["product"]: productId, quantity: amount }));
-    setAmount(item?.quantity || amount);
   };
 
   return (

@@ -1,18 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { Hero, ProductCard } from "@/components/index";
-import { getProducts } from "@/store/shop/shopThunk";
 
 export default function Home() {
-  const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
 
   return (
     <div>

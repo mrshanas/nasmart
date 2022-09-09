@@ -17,7 +17,9 @@ const Navbar = () => {
     <nav className="w-full sticky top-0 bg-white z-50">
       <div className="flex w-[95%] md:w-[90%] mx-auto p-3">
         <div className="flex-[1]">
-          <h1 className="text-xl  opacity-[0.8]">Nasmart</h1>
+          <Link href="/">
+            <h1 className="text-xl  opacity-[0.8]">Nasmart</h1>
+          </Link>
         </div>
         <div className="flex-[2] hidden md:block">
           {/* Nav Links */}
